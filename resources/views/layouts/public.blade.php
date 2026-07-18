@@ -22,8 +22,5 @@
         @yield('contenido')
     </main>
 
-    <footer class="text-center text-xs text-slate-600 py-6">
-        Consulta publica &middot; solo se muestra informacion no sensible.
-    </footer>
 </body>
 </html>

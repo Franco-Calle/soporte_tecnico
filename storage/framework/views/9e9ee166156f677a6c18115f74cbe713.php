@@ -23,9 +23,6 @@
         <?php echo $__env->yieldContent('contenido'); ?>
     </main>
 
-    <footer class="text-center text-xs text-slate-600 py-6">
-        Consulta publica &middot; solo se muestra informacion no sensible.
-    </footer>
 </body>
 </html>
 <?php /**PATH /var/www/html/resources/views/layouts/public.blade.php ENDPATH**/ ?>
