@@ -1,0 +1,47 @@
+FROM php:8.3-fpm-alpine
+
+RUN apk add --no-cache \
+    bash \
+    git \
+    curl \
+    zip \
+    unzip \
+    icu-dev \
+    oniguruma-dev \
+    libzip-dev \
+    libpng-dev \
+    libxml2-dev \
+    autoconf \
+    gcc \
+    g++ \
+    make \
+    linux-headers \
+    mysql-client \
+ && docker-php-ext-install \
+    pdo_mysql \
+    mbstring \
+    intl \
+    zip \
+    bcmath \
+    opcache \
+    exif \
+    pcntl \
+ && docker-php-ext-configure gd \
+ && docker-php-ext-install gd \
+ && apk del autoconf gcc g++ make linux-headers \
+ && rm -rf /var/cache/apk/* /tmp/*
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+COPY docker/php/php-prod.ini /usr/local/etc/php/conf.d/zz-prod.ini
+COPY docker/php/www.conf /usr/local/etc/php-fpm.d/zz-www.conf
+
+WORKDIR /var/www/html
+
+RUN adduser -D -u 1000 -g '' app \
+ && chown -R app:app /var/www/html
+
+USER app
+
+EXPOSE 9000
+CMD ["php-fpm"]
