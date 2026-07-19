@@ -184,5 +184,8 @@
     }
   },
   "active": "9301b78e9da94ba9",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "app/Providers/AppServiceProvider.php.tmp.958467.2c12762dff36",
+    "docker-compose.prod.yml.tmp.958467.ac4a0add1564"
+  ]
 }

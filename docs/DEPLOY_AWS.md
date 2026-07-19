@@ -159,6 +159,15 @@ El script hace, en orden:
 7. `key:generate`, `migrate --force`, `config:cache`, `route:cache`, `view:cache`.
 8. Levanta `app`, `nginx` y `queue`.
 
+```
+1. Instalar buildx v0.17+
+mkdir -p ~/.docker/cli-plugins
+BUILDX_VERSION=$(curl -s https://api.github.com/repos/docker/buildx/releases/latest | grep tag_name | cut -d'"' -f4)
+curl -SL "https://github.com/docker/buildx/releases/download/${BUILDX_VERSION}/buildx-${BUILDX_VERSION}.linux-amd64" \
+    -o ~/.docker/cli-plugins/docker-buildx
+chmod +x ~/.docker/cli-plugins/docker-buildx
+```
+
 Al terminar, prueba:
 
 ```bash
