@@ -1,4 +1,4 @@
-# Despliegue en AWS EC2 (Free Tier)
+we# Despliegue en AWS EC2 (Free Tier)
 
 Guia paso a paso para desplegar el sistema en una instancia EC2 t2.micro o t3.micro (elegible para la capa gratuita durante 12 meses). MySQL corre en la misma instancia dentro de Docker; no se usa RDS.
 
