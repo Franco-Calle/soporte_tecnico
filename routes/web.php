@@ -30,7 +30,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->n
 Route::middleware('auth')->group(function (): void {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
-    // Ordenes de trabajo (RF-02, RF-05).
+    // Ordenes de trabajo 
     Route::get('/ordenes', [OrdenTrabajoController::class, 'index'])->name('ordenes.index');
     Route::get('/ordenes/crear', [OrdenTrabajoController::class, 'create'])->name('ordenes.create');
     Route::post('/ordenes', [OrdenTrabajoController::class, 'store'])->name('ordenes.store');
@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function (): void {
     // Clientes.
     Route::resource('clientes', ClienteController::class)->except(['destroy']);
 
-    // Catalogo (RF-01).
+    // Catalogo 
     Route::get('/catalogo', [CatalogoController::class, 'index'])->name('catalogo.index');
     Route::middleware('role:admin')->group(function (): void {
         Route::get('/catalogo/crear', [CatalogoController::class, 'create'])->name('catalogo.create');
@@ -57,14 +57,14 @@ Route::middleware('auth')->group(function (): void {
         Route::put('/catalogo/{item}', [CatalogoController::class, 'update'])->name('catalogo.update');
     });
 
-    // Inventario (RF-03).
+    // Inventario 
     Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario.index');
     Route::post('/inventario', [InventarioController::class, 'store'])->name('inventario.store');
 
-    // Caja diaria (RF-05).
+    // Caja diaria 
     Route::get('/caja', CajaController::class)->name('caja.index');
 
-    // Usuarios (solo admin).
+    // Usuarios 
     Route::middleware('role:admin')->group(function (): void {
         Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index');
         Route::get('/usuarios/crear', [UsuarioController::class, 'create'])->name('usuarios.create');
